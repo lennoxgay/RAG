@@ -1,20 +1,23 @@
-import streamlit as st # type: ignore
-from PyPDF2 import PdfReader # type: ignore
-from langchain.text_splitter import RecursiveCharacterTextSplitter # type: ignore
 import os
-from langchaingoogle_genai import GoogleGenerativeAIEmbeddings # type: ignore
-import google.generativeai as genai # type: ignore
-from langchain.vectorstores import FAISS # type: ignore
-from langchain-google-genai import ChatGoogleGenerativeAI # type: ignore
-from langchain.chains.question_answering import load_qa_chain # type: ignore
-from langchain.prompts import PromptTemplate # type: ignore
-from dotenv import load_dotenv # type: ignore
+import streamlit as st  # type: ignore
+import google.generativeai as genai  # type: ignore
+from dotenv import load_dotenv  # type: ignore
+from PyPDF2 import PdfReader  # type: ignore
+from langchain.text_splitter import RecursiveCharacterTextSplitter  # type: ignore
+from langchain_community.vectorstores import FAISS  # type: ignore
+from langchain.chains.question_answering import load_qa_chain  # type: ignore
+from langchain.core.prompts import PromptTemplate  # type: ignore
+from langchain_google_genai import GoogleGenerativeAIEmbeddings  # type: ignore
+from langchain_google_genai import ChatGoogleGenerativeAI  # type: ignore
 
+# Load environment variables
 load_dotenv()
-os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-
+# Configure the Gemini API key
+api_key = os.getenv("GOOGLE_API_KEY")
+if api_key:
+    genai.configure(api_key=api_key)
+    
 
 
 
